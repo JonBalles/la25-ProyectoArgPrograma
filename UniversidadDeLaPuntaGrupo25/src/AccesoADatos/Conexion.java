@@ -21,7 +21,7 @@ public class Conexion {
         if (conexion == null) {
             try {
                 Class.forName("org.mariadb.jdbc.Driver");
-                conexion = DriverManager.getConnection(URL + DB + USUARIO + PASSWORD);
+                conexion = DriverManager.getConnection(URL + DB,USUARIO,PASSWORD);
             } catch (ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(null, "Error en la carga del driver" + ex);
             } catch (SQLException ex) {
