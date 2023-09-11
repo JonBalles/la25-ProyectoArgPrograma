@@ -9,8 +9,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class AlumnoData {
@@ -125,6 +123,7 @@ public class AlumnoData {
         PreparedStatement ps;
         try {
             ps= con.prepareStatement(sql);
+            ps.setInt(1, id);
             ResultSet rs=ps.executeQuery();
             if(rs.next()){
                 alumno= new Alumno();
@@ -148,6 +147,7 @@ public class AlumnoData {
         PreparedStatement ps;
         try {
             ps= con.prepareStatement(sql);
+            ps.setInt(1, dni);
             ResultSet rs=ps.executeQuery();
             if(rs.next()){
                 alumno= new Alumno();

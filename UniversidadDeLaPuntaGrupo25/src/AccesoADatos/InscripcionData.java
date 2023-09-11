@@ -5,10 +5,7 @@
  */
 package AccesoADatos;
 
-/**
- *
- * @author Ezequiel
- */
+
 public class InscripcionData {
     
 }
