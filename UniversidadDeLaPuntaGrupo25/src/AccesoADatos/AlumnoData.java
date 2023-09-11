@@ -117,6 +117,7 @@ public class AlumnoData {
         
         return lista;
     }
+   
     public Alumno buscarAlumnoPorId(int id){
        Alumno alumno= null;
         String sql=("SELECT idAlumno, dni, apellido, nombre, fechaNacimiento, estado FROM alumno WHERE idAlumno=?");
