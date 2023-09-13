@@ -221,7 +221,7 @@ public class FormulariodeInscripcion extends javax.swing.JInternalFrame {
         int dni = Integer.parseInt(comboBox[0].trim());
         Alumno alumno = MenuPrincipal.alumnodata.buscarAlumnoPorDni(dni);
         Materia materia = MenuPrincipal.materiadata.buscarMateria(idMateria);
-        Inscripcion ins = new Inscripcion(alumno, materia);
+        Inscripcion ins = new Inscripcion(0, alumno, materia);
         MenuPrincipal.inscripciondata.guardarInscripcion(ins);
         bgMaterias.clearSelection();
         borraFilas();
