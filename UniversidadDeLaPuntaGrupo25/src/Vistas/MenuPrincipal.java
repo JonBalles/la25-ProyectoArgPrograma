@@ -119,6 +119,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        ActualizarNotas gestionNota = new ActualizarNotas ();
+        gestionNota.setVisible(true);
+        escritorio.add(gestionNota);
+        escritorio.moveToFront(gestionNota);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     public static void main(String args[]) {
