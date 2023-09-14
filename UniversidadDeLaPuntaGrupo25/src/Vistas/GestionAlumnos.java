@@ -1,17 +1,19 @@
-
 package Vistas;
 
 import AccesoADatos.AlumnoData;
 import Entidades.Alumno;
+import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
-
 public class GestionAlumnos extends javax.swing.JInternalFrame {
+
+    private boolean editar = false;
 
     public GestionAlumnos() {
         initComponents();
+        desactivarCampos();
     }
 
     @SuppressWarnings("unchecked")
@@ -71,6 +73,11 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         });
 
         jBNuevo.setText("Nuevo");
+        jBNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBNuevoActionPerformed(evt);
+            }
+        });
 
         jBEliminar.setText("Eliminar");
         jBEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -105,7 +112,9 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jBNuevo)
-                                .addGap(143, 143, 143)
+                                .addGap(37, 37, 37)
+                                .addComponent(jBEliminar)
+                                .addGap(30, 30, 30)
                                 .addComponent(jBGuardar)
                                 .addGap(32, 32, 32)
                                 .addComponent(jBSalir)
@@ -138,13 +147,8 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
                                     .addComponent(jTApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(127, 127, 127))))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(163, 163, 163)
-                        .addComponent(jBEliminar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(187, 187, 187)
-                        .addComponent(jLabel1)))
+                .addGap(187, 187, 187)
+                .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -190,15 +194,53 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTNombreActionPerformed
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
-        // TODO add your handling code here:
+
+        if (!jTDNI.getText().isEmpty()) {
+            int dni = Integer.parseInt(jTDNI.getText());
+            int id = MenuPrincipal.alumnodata.buscarAlumnoPorDni(dni).getIdAlumno();
+            MenuPrincipal.alumnodata.eliminarAlumno(id);
+        }
+        resetearCampos();
+        desactivarCampos();
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-        // TODO add your handling code here:
+
+        boolean flag = true;
+
+        if (jTDNI.getText().isEmpty() || jTApellido.getText().isEmpty() || jTNombre.getText().isEmpty() || jDCFechaN.toString().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El campo no puede estar vacío");
+        } else {
+            String apellido = jTApellido.getText();
+            String nombre = jTNombre.getText();
+            int dni = Integer.parseInt(jTDNI.getText());
+            LocalDate fechaNac = jDCFechaN.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            boolean estado = true;
+
+            Alumno alu = new Alumno(dni, apellido, nombre, fechaNac, estado);
+
+            for (Alumno alumno : MenuPrincipal.alumnodata.listarAlumnos()) {
+                if (dni == alumno.getDni()) {
+                    JOptionPane.showMessageDialog(null, "El DNI ingresado ya está registrado en la base de datos");
+                    flag = false;
+                }
+            }
+
+            if (this.editar) {
+                MenuPrincipal.alumnodata.modificarAlumno(alu);
+            } else if (flag) {
+                MenuPrincipal.alumnodata.guardarAlumno(alu);
+            }
+
+            this.editar = false;
+            resetearCampos();
+            desactivarCampos();
+        }
     }//GEN-LAST:event_jBGuardarActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
-        // TODO add your handling code here:
+        //Elimina todos los subprocesos
+        dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jRBEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBEstadoActionPerformed
@@ -206,28 +248,42 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jRBEstadoActionPerformed
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-      int dni;
-      Alumno alu;
-      
-        if (jTDNI.getText().isEmpty()){
-           JOptionPane.showMessageDialog(null, "El campo no puede estar vacío");
-       }else{
-           try{
-               dni = Integer.parseInt(jTDNI.getText());
-               alu = new Alumno ();
-               alu = MenuPrincipal.alumnodata.buscarAlumnoPorDni(dni);
-               jTApellido.setText(alu.getApellido());
-               jTNombre.setText(alu.getNombre());
-               //jRBEstado.setEnabled(alu.isEstado()); Chequear!
-               jRBEstado.setSelected(alu.isEstado());
-               jDCFechaN.setDate(Date.from(alu.getFechaNac().atStartOfDay(ZoneId.systemDefault()).toInstant()));
-          
-           }catch(NumberFormatException e){
-               JOptionPane.showMessageDialog(null, "Debe ingresar número" + e);
-           }       
-       }  
+        int dni;
+        Alumno alu;
+        boolean flag = true;
+
+        if (jTDNI.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El campo no puede estar vacío");
+        } else {
+            try {
+
+                dni = Integer.parseInt(jTDNI.getText());
+                alu = new Alumno();
+                for (Alumno alumno : MenuPrincipal.alumnodata.listarAlumnos()) {
+                    if (dni == alumno.getDni()) {
+                        activarCampos();
+                        alu = MenuPrincipal.alumnodata.buscarAlumnoPorDni(dni);
+                        jTApellido.setText(alu.getApellido());
+                        jTNombre.setText(alu.getNombre());
+                        jRBEstado.setSelected(alu.isEstado());
+                        jDCFechaN.setDate(Date.from(alu.getFechaNac().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+                        flag = false;
+                        this.editar = true;
+                    }
+                }
+                if (flag) {
+                    JOptionPane.showMessageDialog(null, "No se ha encontrado el DNI del alumno");
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Debe ingresar número" + e);
+            }
+        }
     }//GEN-LAST:event_jBBuscarActionPerformed
 
+    private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
+        this.editar = false;
+        activarCampos();
+    }//GEN-LAST:event_jBNuevoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBuscar;
@@ -248,4 +304,33 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTDNI;
     private javax.swing.JTextField jTNombre;
     // End of variables declaration//GEN-END:variables
+
+    private void resetearCampos() {
+
+        jTApellido.setText("");
+        jTNombre.setText("");
+        jTDNI.setText("");
+        jDCFechaN.setDateFormatString("");
+        jRBEstado.setSelected(false);
+    }
+
+    private void desactivarCampos() {
+
+        jBGuardar.setEnabled(false);
+        jBEliminar.setEnabled(false);
+        jTApellido.setEnabled(false);
+        jTNombre.setEnabled(false);
+        jDCFechaN.setEnabled(false);
+        jRBEstado.setEnabled(false);
+    }
+
+    private void activarCampos() {
+
+        jBGuardar.setEnabled(true);
+        jBEliminar.setEnabled(true);
+        jTApellido.setEnabled(true);
+        jTNombre.setEnabled(true);
+        jDCFechaN.setEnabled(true);
+        jRBEstado.setEnabled(true);
+    }
 }
