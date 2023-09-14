@@ -228,12 +228,18 @@ public class FormulariodeInscripcion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbInscribirActionPerformed
 
     private void jcbListaAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbListaAlumnosActionPerformed
+        try{
+        bgMaterias.clearSelection();
+        borraFilas();
         String alumno = (String) jcbListaAlumnos.getSelectedItem().toString();
         if (!alumno.equalsIgnoreCase("")) {
             jrbMateriaInscripta.setEnabled(true);
             jrbMateriaNOinscripta.setEnabled(true);
         } else {
             desactivarCampos();
+        }
+        }catch(Exception e){
+            
         }
     }//GEN-LAST:event_jcbListaAlumnosActionPerformed
 

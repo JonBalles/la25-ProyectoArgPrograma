@@ -3,6 +3,7 @@ package Vistas;
 import AccesoADatos.AlumnoData;
 import AccesoADatos.InscripcionData;
 import AccesoADatos.MateriaData;
+import javax.swing.JInternalFrame;
 
 public class MenuPrincipal extends javax.swing.JFrame {
 
@@ -41,11 +42,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 510, Short.MAX_VALUE)
+            .addGap(0, 723, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 359, Short.MAX_VALUE)
+            .addGap(0, 560, Short.MAX_VALUE)
         );
 
         jMenu1.setText("Alumno");
@@ -70,6 +71,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu3.setText("Administracion");
 
         jMenuItem3.setText("Manejo de inscripciones");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem3);
 
         jMenuItem4.setText("Manipulacion de notas");
@@ -109,23 +115,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        escritorio.removeAll();
-        escritorio.repaint();
+
         GestionAlumnos gestionAlu = new GestionAlumnos ();
-        gestionAlu.setVisible(true);
-        escritorio.add(gestionAlu);
-        escritorio.moveToFront(gestionAlu);
+        generarVentana(gestionAlu);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
-        escritorio.removeAll();
-        escritorio.repaint();
         ActualizarNotas gestionNota = new ActualizarNotas ();
-        gestionNota.setVisible(true);
-        escritorio.add(gestionNota);
-        escritorio.moveToFront(gestionNota);
+        generarVentana(gestionNota);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+      FormulariodeInscripcion ForInscripcion=new FormulariodeInscripcion();
+        generarVentana(ForInscripcion);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -173,4 +177,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     // End of variables declaration//GEN-END:variables
+   private void generarVentana(JInternalFrame panel) {
+        escritorio.removeAll();
+        escritorio.repaint();
+        panel.setVisible(true);
+        escritorio.add(panel);
+        escritorio.moveToFront(panel);
+    }
 }
