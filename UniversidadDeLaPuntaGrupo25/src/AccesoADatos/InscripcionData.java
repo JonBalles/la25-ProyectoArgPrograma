@@ -31,8 +31,10 @@ public class InscripcionData {
         try {
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, ins.getNota());
-            ps.setInt(2, ins.getAlumno().getIdAlumno());
-            ps.setInt(3, ins.getMateria().getIdMateria());
+            int ida = ins.getAlumno().getIdAlumno();
+            ps.setInt(2, ida);
+            int idm = ins.getMateria().getIdMateria();
+            ps.setInt(3, idm);
 
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
@@ -128,7 +130,7 @@ public class InscripcionData {
     public List<Materia> obtenerMateriasNoCursadas(int id) {
         List<Materia> lista = new ArrayList<>();
         Materia materia = null;
-        String sql = ("SELECT materia.idMateria, nombre, año from materia join inscripcion on (materia.idMateria != inscripcion.idMateria) where idAlumno = ?");
+        String sql = ("SELECT * FROM `materia` WHERE estado=1 and idMateria not in (SELECT idMateria FROM inscripcion where idAlumno =?)");
         PreparedStatement ps;
         try {
             ps = con.prepareStatement(sql);
@@ -152,7 +154,7 @@ public class InscripcionData {
     }
 
     public void borrarInscripcionMateriaAlumno(int idAlumno, int idMateria) {
-        String sql = "DELETE inscripcion WHERE idAlumno = ? AND idMateria = ?";
+        String sql = "DELETE From inscripcion WHERE idAlumno = ? AND idMateria = ?";
         PreparedStatement ps;
 
         try {
