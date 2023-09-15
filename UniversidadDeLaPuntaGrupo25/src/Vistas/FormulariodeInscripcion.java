@@ -116,14 +116,14 @@ public class FormulariodeInscripcion extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jbInscribir)
                 .addGap(82, 82, 82)
                 .addComponent(jbAnular)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                 .addComponent(Salir)
                 .addGap(21, 21, 21))
             .addGroup(layout.createSequentialGroup()
@@ -188,7 +188,7 @@ public class FormulariodeInscripcion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbAnularActionPerformed
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
-        this.setVisible(false);
+       dispose();
 
     }//GEN-LAST:event_SalirActionPerformed
 

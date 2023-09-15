@@ -64,6 +64,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu2.setText("Materia");
 
         jMenuItem2.setText("Formulario de Materias");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem2);
 
         jMenuBar1.add(jMenu2);
@@ -130,6 +135,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
       FormulariodeInscripcion ForInscripcion=new FormulariodeInscripcion();
         generarVentana(ForInscripcion);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        GestionDeMateria gestionDeMateria = new GestionDeMateria();
+        generarVentana(gestionDeMateria);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
