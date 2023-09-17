@@ -210,21 +210,16 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
             boolean estado = jRBEstado.isSelected();
 
             Alumno alu = new Alumno(dni, apellido, nombre, fechaNac, estado);
-            for (Alumno alumno : MenuPrincipal.alumnodata.listarAlumnos()) {
-                if (dni == alumno.getDni()) {
-                    if (this.editar) {
-                        alu.setIdAlumno(alumno.getIdAlumno());
-                        MenuPrincipal.alumnodata.modificarAlumno(alu);
-                    } else {
-                        JOptionPane.showMessageDialog(null, ("El DNI ingresado ya está registrado en la base de datos"));
-                    }
-                    flag = false;
-                }
-            }
-            if (flag) {
-                MenuPrincipal.alumnodata.guardarAlumno(alu);
-            }
+            Alumno alu2 = MenuPrincipal.alumnodata.buscarAlumnoPorDni(dni);
 
+            if (alu2 == null) {
+                MenuPrincipal.alumnodata.guardarAlumno(alu);
+            } else if (this.editar) {
+                alu.setIdAlumno(alu2.getIdAlumno());
+                MenuPrincipal.alumnodata.modificarAlumno(alu);
+            } else {
+                JOptionPane.showMessageDialog(null, ("El DNI ingresado ya está registrado en la base de datos"));
+            }
             this.editar = false;
             resetearCampos();
             desactivarCampos();
@@ -256,10 +251,10 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
                     jRBEstado.setSelected(alu.isEstado());
                     jDCFechaN.setDate(Date.from(alu.getFechaNac().atStartOfDay(ZoneId.systemDefault()).toInstant()));
                     this.editar = true;
-                }else{
-                     JOptionPane.showMessageDialog(null, "No se ha encontrado el DNI del alumno");
-                     desactivarCampos();
-                }               
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se ha encontrado el DNI del alumno");
+                    desactivarCampos();
+                }
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Debe ingresar número" + e);
             }
