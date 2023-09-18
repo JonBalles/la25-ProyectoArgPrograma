@@ -1,5 +1,5 @@
 /UniversidadDeLaPuntaGrupo25/build/
 *.xml
 *.properties
-*.xml
-*.properties
+/nbproject/private/private.xml
+

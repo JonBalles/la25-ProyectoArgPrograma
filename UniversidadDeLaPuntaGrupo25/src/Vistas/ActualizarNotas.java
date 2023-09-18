@@ -210,24 +210,18 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
         int columnaIdMateria = 0; 
         int idMateria = (int) jTableAlumNota.getValueAt(filaSeleccionada, columnaIdMateria);
         
-        //nota de la materia
-        int columnaNota = 2; 
-        String idMateriaPuro = (String) jTableAlumNota.getValueAt(filaSeleccionada, columnaNota);
-        
-        
-        //IdMateria llega como objeto al cual casteo a String.
-        //Valido que el campo no este vacio minimizando el indice de error
-        
-        if(idMateriaPuro.isEmpty()){
-            JOptionPane.showMessageDialog(null, "Campo nota vacio. Por favor intente nuevamente");
-        }else{
-            int nota = Integer.parseInt(idMateriaPuro);
+        try {
+            //nota de la materia
+            int columnaNota = 2;
+            int tomarNota = Integer.parseInt(jTableAlumNota.getValueAt(filaSeleccionada, columnaNota).toString());
 
-        //Ejecuto la modificacion de la nota en la base de datos
-        insData.actualizarNota(idAlumno, idMateria, nota);
+            //IdMateria llega como objeto al cual casteo a String.
+            //Valido que el campo no este vacio minimizando el indice de error
+            //Ejecuto la modificacion de la nota en la base de datos
+            insData.actualizarNota(idAlumno, idMateria, tomarNota);
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "No puedes utilizar otro tipo de dato que no sea un entero");
         }
-        
-        
-        
     }
 }
