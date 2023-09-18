@@ -187,7 +187,7 @@ public class GestionDeMateria extends javax.swing.JInternalFrame {
                     resetearCampos();
                 }
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Debe ingresar número" + e);
+                JOptionPane.showMessageDialog(null, "Debe ingresar número");
             }
         }
     }//GEN-LAST:event_jBuscarActionPerformed
