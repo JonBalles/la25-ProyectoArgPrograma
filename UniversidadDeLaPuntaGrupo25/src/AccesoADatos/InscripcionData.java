@@ -31,10 +31,8 @@ public class InscripcionData {
         try {
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, ins.getNota());
-            int ida = ins.getAlumno().getIdAlumno();
-            ps.setInt(2, ida);
-            int idm = ins.getMateria().getIdMateria();
-            ps.setInt(3, idm);
+            ps.setInt(2, ins.getAlumno().getIdAlumno());
+            ps.setInt(3, ins.getMateria().getIdMateria());
 
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
@@ -46,7 +44,7 @@ public class InscripcionData {
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error en la base de datos" + ex);
+            JOptionPane.showMessageDialog(null, "Error en la base de datos");
         }
 
     }
@@ -69,7 +67,7 @@ public class InscripcionData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error en la base de datos" + ex);
+            JOptionPane.showMessageDialog(null, "Error en la base de datos");
         }
 
         return lista;
@@ -95,7 +93,7 @@ public class InscripcionData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error en la base de datos" + ex);
+            JOptionPane.showMessageDialog(null, "Error en la base de datos");
         }
 
         return lista;
@@ -121,7 +119,7 @@ public class InscripcionData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error en la base de datos" + ex);
+            JOptionPane.showMessageDialog(null, "Error en la base de datos");
         }
 
         return lista;
@@ -147,7 +145,7 @@ public class InscripcionData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error en la base de datos" + ex);
+            JOptionPane.showMessageDialog(null, "Error en la base de datos");
         }
 
         return lista;
@@ -170,7 +168,7 @@ public class InscripcionData {
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error en la base de datos" + ex);
+            JOptionPane.showMessageDialog(null, "Error en la base de datos");
         }
     }
 
@@ -192,7 +190,7 @@ public class InscripcionData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error en la base de datos" + ex);
+            JOptionPane.showMessageDialog(null, "Error en la base de datos");
 
         }
     }
@@ -219,7 +217,7 @@ public class InscripcionData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error en la base de datos" + ex);
+            JOptionPane.showMessageDialog(null, "Error en la base de datos" );
         }
 
         return lista;

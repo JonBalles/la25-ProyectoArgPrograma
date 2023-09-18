@@ -40,7 +40,7 @@ public class MateriaData {
             ps.close();
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al cargar materia en la base de datos" + ex);
+            JOptionPane.showMessageDialog(null, "Error al cargar materia en la base de datos");
         }
         
     }
@@ -62,7 +62,7 @@ public class MateriaData {
             }
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error de base de datos: " +ex);
+            JOptionPane.showMessageDialog(null, "Error de base de datos: ");
         }
 
         return materia;
@@ -86,7 +86,7 @@ public class MateriaData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al actualizar los datos en la base de datos" + ex);
+            JOptionPane.showMessageDialog(null, "Error al actualizar los datos en la base de datos");
 
         }
     }
@@ -108,7 +108,7 @@ public class MateriaData {
             ps.close();
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al cargar la baja en la base de datos" + ex);
+            JOptionPane.showMessageDialog(null, "Error al cargar la baja en la base de datos");
         }
     }
     
@@ -130,7 +130,7 @@ public class MateriaData {
             }
           ps.close();
         } catch (SQLException ex) {
-          JOptionPane.showMessageDialog(null, "Error al cargar la baja en la base de datos" + ex);
+          JOptionPane.showMessageDialog(null, "Error al cargar la baja en la base de datos");
         }
         
         return lista;

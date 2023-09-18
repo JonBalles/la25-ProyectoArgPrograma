@@ -41,7 +41,7 @@ public class AlumnoData {
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al cargar alumno en la base de datos" + ex);
+            JOptionPane.showMessageDialog(null, "Error al cargar alumno en la base de datos");
         }
 
     }
@@ -64,7 +64,7 @@ public class AlumnoData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al actualizar los datos en la base de datos" + ex);
+            JOptionPane.showMessageDialog(null, "Error al actualizar los datos en la base de datos");
 
         }
     }
@@ -86,7 +86,7 @@ public class AlumnoData {
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al cargar la baja en la base de datos" + ex);
+            JOptionPane.showMessageDialog(null, "Error al cargar la baja en la base de datos");
         }
     }
 
@@ -135,7 +135,7 @@ public class AlumnoData {
             }
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
+            JOptionPane.showMessageDialog(null, "Error en cargar del alumno");
         }
 
         return alumno;
@@ -160,7 +160,7 @@ public class AlumnoData {
             }
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex);
+            JOptionPane.showMessageDialog(null, "Error en cargar del alumno");
         }
 
         return alumno;

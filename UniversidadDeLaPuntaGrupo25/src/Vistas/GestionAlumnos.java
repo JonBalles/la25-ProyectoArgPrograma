@@ -198,31 +198,33 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
 
-        boolean flag = true;
-
         if (jTDNI.getText().isEmpty() || jTApellido.getText().isEmpty() || jTNombre.getText().isEmpty() || jDCFechaN.toString().isEmpty()) {
             JOptionPane.showMessageDialog(null, "El campo no puede estar vacío");
         } else {
-            String apellido = jTApellido.getText();
-            String nombre = jTNombre.getText();
-            int dni = Integer.parseInt(jTDNI.getText());
-            LocalDate fechaNac = jDCFechaN.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            boolean estado = jRBEstado.isSelected();
+            try {
+                String apellido = jTApellido.getText();
+                String nombre = jTNombre.getText();
+                int dni = Integer.parseInt(jTDNI.getText());
+                LocalDate fechaNac = jDCFechaN.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                boolean estado = jRBEstado.isSelected();
 
-            Alumno alu = new Alumno(dni, apellido, nombre, fechaNac, estado);
-            Alumno alu2 = MenuPrincipal.alumnodata.buscarAlumnoPorDni(dni);
+                Alumno alu = new Alumno(dni, apellido, nombre, fechaNac, estado);
+                Alumno alu2 = MenuPrincipal.alumnodata.buscarAlumnoPorDni(dni);
 
-            if (alu2 == null) {
-                MenuPrincipal.alumnodata.guardarAlumno(alu);
-            } else if (this.editar) {
-                alu.setIdAlumno(alu2.getIdAlumno());
-                MenuPrincipal.alumnodata.modificarAlumno(alu);
-            } else {
-                JOptionPane.showMessageDialog(null, ("El DNI ingresado ya está registrado en la base de datos"));
+                if (alu2 == null) {
+                    MenuPrincipal.alumnodata.guardarAlumno(alu);
+                } else if (this.editar) {
+                    alu.setIdAlumno(alu2.getIdAlumno());
+                    MenuPrincipal.alumnodata.modificarAlumno(alu);
+                } else {
+                    JOptionPane.showMessageDialog(null, ("El DNI ingresado ya está registrado en la base de datos"));
+                }
+                this.editar = false;
+                resetearCampos();
+                desactivarCampos();               
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Ingrese los valores correctos en cada campo");
             }
-            this.editar = false;
-            resetearCampos();
-            desactivarCampos();
         }
     }//GEN-LAST:event_jBGuardarActionPerformed
 
@@ -256,7 +258,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
                     desactivarCampos();
                 }
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Debe ingresar número" + e);
+                JOptionPane.showMessageDialog(null, "Debe ingresar Dni correctamente");
             }
         }
     }//GEN-LAST:event_jBBuscarActionPerformed
