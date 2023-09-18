@@ -11,7 +11,7 @@ public class FormulariodeInscripcion extends javax.swing.JInternalFrame {
 
         @Override
         public boolean isCellEditable(int f, int c) {
-            return c == 3;
+            return false;
         }
     };
 

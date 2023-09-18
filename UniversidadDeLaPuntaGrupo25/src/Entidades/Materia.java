@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
  *
  * @author Ezequiel
  */
-public class Materia {
+public class Materia implements Utiles {
      private int idMateria;
     private String nombre;
     private int anio;
@@ -70,10 +70,10 @@ public class Materia {
         return "Materia{" + "idMateria=" + idMateria + ", nombre=" + nombre + ", anio=" + anio + ", estado=" + estado + '}';
     }
 
-    
+    @Override
     public String validar(String nombre){
         String validado = "";
-        String regex = "^[\\p{L}]{1,30}$";
+        String regex = "^[A-Za-z\\s]+$";
         
          if (Pattern.matches(regex, nombre)) {
             validado = nombre;
