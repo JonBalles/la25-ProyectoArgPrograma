@@ -6,12 +6,13 @@
 package Entidades;
 
 import java.time.LocalDate;
+import java.util.regex.Pattern;
 
 /**
  *
  * @author Ezequiel
  */
-public class Alumno {
+public class Alumno implements Utiles {
 
     private int idAlumno;
     private int dni;
@@ -93,6 +94,17 @@ public class Alumno {
         return "Alumno{" + "idAlumno=" + idAlumno + ", dni=" + dni + ", apellido=" + apellido + ", nombre=" + nombre + ", fechaNac=" + fechaNac + ", estado=" + estado + '}';
     }
 
- 
+   @Override
+    public String validar(String nombre){
+        String validado = "";
+        String regex = "^[A-Za-z\\s]+$";
+        
+         if (Pattern.matches(regex, nombre)) {
+            validado = nombre;
+        } else {
+            System.out.println("La cadena no es válida.");
+        }
+         return validado;
+    }
 
 }

@@ -197,9 +197,12 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
+        Alumno alumValidar = new Alumno();
+        jTApellido.setText(alumValidar.validar(jTApellido.getText()));
+        jTNombre.setText(alumValidar.validar(jTNombre.getText()));
 
         if (jTDNI.getText().isEmpty() || jTApellido.getText().isEmpty() || jTNombre.getText().isEmpty() || jDCFechaN.toString().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "El campo no puede estar vacío");
+            JOptionPane.showMessageDialog(null, "Llene los campos correctamente");
         } else {
             try {
                 String apellido = jTApellido.getText();

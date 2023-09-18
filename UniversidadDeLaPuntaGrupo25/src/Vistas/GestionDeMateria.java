@@ -211,13 +211,14 @@ public class GestionDeMateria extends javax.swing.JInternalFrame {
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
 
         Materia mateValidar = new Materia();
-        String nombre = mateValidar.validar(jtNombre.getText());
+        jtNombre.setText(mateValidar.validar(jtNombre.getText()));
         
-        if (nombre.isEmpty() || jtAnio.getText().isEmpty()) {
+        if (jtNombre.getText().isEmpty() || jtAnio.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Llene los campos correctamente");
         } else {
           try{
             int codigo;
+            String nombre = jtNombre.getText();
             int anio = Integer.parseInt(jtAnio.getText());
             boolean estado = jrbEstado.isSelected();          
             Materia mate = new Materia(nombre, anio, estado);
