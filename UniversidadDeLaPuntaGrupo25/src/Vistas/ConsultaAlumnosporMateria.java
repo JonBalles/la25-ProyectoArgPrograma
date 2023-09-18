@@ -113,7 +113,6 @@ public class ConsultaAlumnosporMateria extends javax.swing.JInternalFrame {
         String[] comboBox = jcbListaMaterias.getSelectedItem().toString().split(",");
         int codigo = Integer.parseInt(comboBox[1].trim());
         for (Alumno alumno : MenuPrincipal.inscripciondata.obtenerAlumnosXMateria(codigo)) {
-            System.out.println(alumno.toString());
             modelo.addRow(new Object[]{
                 alumno.getIdAlumno(),
                 alumno.getDni(),

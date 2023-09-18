@@ -7,22 +7,18 @@ import Entidades.Inscripcion;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
 public class ActualizarNotas extends javax.swing.JInternalFrame {
 
-   private DefaultTableModel modelo = new DefaultTableModel(){
-       
-       @Override
-       public boolean isCellEditable(int f, int c){
-        return c == 2;
-    }
-   };
-   private AlumnoData datos = new AlumnoData();
-   private InscripcionData insData = new InscripcionData();
-   
-   
-   
-   
+    private DefaultTableModel modelo = new DefaultTableModel() {
+
+        @Override
+        public boolean isCellEditable(int f, int c) {
+            return c == 2;
+        }
+    };
+    private AlumnoData datos = new AlumnoData();
+    private InscripcionData insData = new InscripcionData();
+
     public ActualizarNotas() {
         initComponents();
         armarCabecera();
@@ -138,12 +134,12 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
 
     //Cambio en JComboBox
     private void jComboAlumNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboAlumNotasActionPerformed
-      cargarTabla();
+        cargarTabla();
     }//GEN-LAST:event_jComboAlumNotasActionPerformed
 
     //Editar nota
     private void JButtonGuardarNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonGuardarNotaActionPerformed
-       editNota();
+        editNota();
     }//GEN-LAST:event_JButtonGuardarNotaActionPerformed
 
 
@@ -157,77 +153,70 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTableAlumNota;
     // End of variables declaration//GEN-END:variables
 
-
     private void armarCabecera() {
         modelo.addColumn("Codigo");
         modelo.addColumn("Materia");
         modelo.addColumn("Nota");
         jTableAlumNota.setModel(modelo);
-     }
+    }
 
     private void cargarCombo() {
         jComboAlumNotas.removeAllItems();
-        for(Alumno alu : datos.listarAlumnos()) {
-            jComboAlumNotas.addItem(alu.getDni() +", " + alu.getNombre()+", " + alu.getApellido());
+        for (Alumno alu : datos.listarAlumnos()) {
+            jComboAlumNotas.addItem(alu.getDni() + ", " + alu.getNombre() + ", " + alu.getApellido());
         }
     }
 
-    private void cargarTabla(){
-        String [] alumno = jComboAlumNotas.getSelectedItem().toString().split(", ");   
+    private void cargarTabla() {
+        String[] alumno = jComboAlumNotas.getSelectedItem().toString().split(", ");
         int dniAlumno = Integer.parseInt(alumno[0]);
 
         borrarTabla();
-        
-        for(Inscripcion ins : insData.obtenerInscripciones()){
-            if(ins.getAlumno().getDni() == dniAlumno){
-                modelo.addRow(new Object [ ] {
+
+        for (Inscripcion ins : insData.obtenerInscripciones()) {
+            if (ins.getAlumno().getDni() == dniAlumno) {
+                modelo.addRow(new Object[]{
                     ins.getMateria().getIdMateria(),
                     ins.getMateria().getNombre(),
-                    ins.getNota()   
+                    ins.getNota()
                 });
             }
-           
+
         }
     }
-    
-    private void borrarTabla(){
-    int cantFilas = jTableAlumNota.getRowCount() -1 ;
-    for (int f = cantFilas ; f >= 0 ; f--){
-        modelo.removeRow(f);
+
+    private void borrarTabla() {
+        int cantFilas = jTableAlumNota.getRowCount() - 1;
+        for (int f = cantFilas; f >= 0; f--) {
+            modelo.removeRow(f);
+        }
     }
-}
-    
-    private void editNota(){
+
+    private void editNota() {
         //Seleccionamos la fila
         int filaSeleccionada = jTableAlumNota.getSelectedRow();
-        
+
         //id Alumno
-        String [] alumno = jComboAlumNotas.getSelectedItem().toString().split(", ");   
+        String[] alumno = jComboAlumNotas.getSelectedItem().toString().split(", ");
         int dniAlumno = Integer.parseInt(alumno[0]);
         int idAlumno = datos.buscarAlumnoPorDni(dniAlumno).getIdAlumno();
-        
-        //id Materia
-        int columnaIdMateria = 0; 
-        int idMateria = (int) jTableAlumNota.getValueAt(filaSeleccionada, columnaIdMateria);
-        
-        //nota de la materia
-        int columnaNota = 2; 
-        String idMateriaPuro = (String) jTableAlumNota.getValueAt(filaSeleccionada, columnaNota);
-        
-        
-        //IdMateria llega como objeto al cual casteo a String.
-        //Valido que el campo no este vacio minimizando el indice de error
-        
-        if(idMateriaPuro.isEmpty()){
-            JOptionPane.showMessageDialog(null, "Campo nota vacio. Por favor intente nuevamente");
-        }else{
-            int nota = Integer.parseInt(idMateriaPuro);
 
-        //Ejecuto la modificacion de la nota en la base de datos
-        insData.actualizarNota(idAlumno, idMateria, nota);
+        //id Materia
+        int columnaIdMateria = 0;
+        int idMateria = (int) jTableAlumNota.getValueAt(filaSeleccionada, columnaIdMateria);
+
+        try {
+            //nota de la materia
+            int columnaNota = 2;
+            int tomarNota = Integer.parseInt(jTableAlumNota.getValueAt(filaSeleccionada, columnaNota).toString());
+
+            //IdMateria llega como objeto al cual casteo a String.
+            //Valido que el campo no este vacio minimizando el indice de error
+            //Ejecuto la modificacion de la nota en la base de datos
+            insData.actualizarNota(idAlumno, idMateria, tomarNota);
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "No puedes utilizar otro tipo de dato que no sea un entero");
         }
-        
-        
-        
     }
 }

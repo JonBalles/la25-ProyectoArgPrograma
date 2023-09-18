@@ -221,9 +221,11 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
                 }
                 this.editar = false;
                 resetearCampos();
-                desactivarCampos();               
+                desactivarCampos();
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Ingrese los valores correctos en cada campo");
+            } catch (NullPointerException e) {
+                JOptionPane.showMessageDialog(null, "Ingrese la fecha correctamente");
             }
         }
     }//GEN-LAST:event_jBGuardarActionPerformed
