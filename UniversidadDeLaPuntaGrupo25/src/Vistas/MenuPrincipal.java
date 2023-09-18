@@ -6,19 +6,19 @@ import AccesoADatos.MateriaData;
 import javax.swing.JInternalFrame;
 
 public class MenuPrincipal extends javax.swing.JFrame {
-
+    
     public static AlumnoData alumnodata;
     public static MateriaData materiadata;
     public static InscripcionData inscripciondata;
-
+    
     public MenuPrincipal() {
         initComponents();
         this.alumnodata = new AlumnoData();
         this.materiadata = new MateriaData();
         this.inscripciondata = new InscripcionData();
-
+        
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -35,6 +35,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,6 +65,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu2.setText("Materia");
 
         jMenuItem2.setText("Formulario de Materias");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem2);
 
         jMenuBar1.add(jMenu2);
@@ -91,11 +97,25 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu4.setText("Consultas");
 
         jMenuItem5.setText("Alumnos por materia");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem5);
 
         jMenuBar1.add(jMenu4);
 
         jMenu5.setText("Salir");
+
+        jMenuItem6.setText("Salir");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem6);
+
         jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
@@ -115,22 +135,36 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-
-        GestionAlumnos gestionAlu = new GestionAlumnos ();
+        
+        GestionAlumnos gestionAlu = new GestionAlumnos();
         generarVentana(gestionAlu);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
-        ActualizarNotas gestionNota = new ActualizarNotas ();
+        ActualizarNotas gestionNota = new ActualizarNotas();
         generarVentana(gestionNota);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-      FormulariodeInscripcion ForInscripcion=new FormulariodeInscripcion();
+        FormulariodeInscripcion ForInscripcion = new FormulariodeInscripcion();
         generarVentana(ForInscripcion);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        GestionDeMateria gestionDeMateria = new GestionDeMateria();
+        generarVentana(gestionDeMateria);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        ConsultaAlumnosporMateria cAlumnosporMateria = new ConsultaAlumnosporMateria();
+        generarVentana(cAlumnosporMateria);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        dispose();        
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -176,6 +210,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     // End of variables declaration//GEN-END:variables
    private void generarVentana(JInternalFrame panel) {
         escritorio.removeAll();
