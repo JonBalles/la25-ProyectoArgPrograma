@@ -19,7 +19,7 @@ public class MateriaData {
     }
     
     public void guardarMateria(Materia materia){
-           String sql = "INSERT INTO materia(nombre, año, estado) VALUES (?,?,?)";
+           String sql = "INSERT INTO materia(nombre, año, estado) VALUES (?,?,1)";
         PreparedStatement ps;
         
         try {
@@ -28,7 +28,6 @@ public class MateriaData {
             
             ps.setString(1, materia.getNombre());
             ps.setInt(2, materia.getAnio());
-            ps.setBoolean(3, materia.isEstado());
             
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();

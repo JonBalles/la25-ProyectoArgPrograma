@@ -7,7 +7,13 @@ import javax.swing.table.DefaultTableModel;
 
 public class FormulariodeInscripcion extends javax.swing.JInternalFrame {
 
-    private DefaultTableModel modelo = new DefaultTableModel();
+    private DefaultTableModel modelo = new DefaultTableModel() {
+
+        @Override
+        public boolean isCellEditable(int f, int c) {
+            return c == 3;
+        }
+    };
 
     public FormulariodeInscripcion() {
         initComponents();
@@ -188,7 +194,7 @@ public class FormulariodeInscripcion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbAnularActionPerformed
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
-       dispose();
+        dispose();
 
     }//GEN-LAST:event_SalirActionPerformed
 
@@ -228,18 +234,18 @@ public class FormulariodeInscripcion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbInscribirActionPerformed
 
     private void jcbListaAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbListaAlumnosActionPerformed
-        try{
-        bgMaterias.clearSelection();
-        borraFilas();
-        String alumno = (String) jcbListaAlumnos.getSelectedItem().toString();
-        if (!alumno.equalsIgnoreCase("")) {
-            jrbMateriaInscripta.setEnabled(true);
-            jrbMateriaNOinscripta.setEnabled(true);
-        } else {
-            desactivarCampos();
-        }
-        }catch(Exception e){
-            
+        try {
+            bgMaterias.clearSelection();
+            borraFilas();
+            String alumno = (String) jcbListaAlumnos.getSelectedItem().toString();
+            if (!alumno.equalsIgnoreCase("")) {
+                jrbMateriaInscripta.setEnabled(true);
+                jrbMateriaNOinscripta.setEnabled(true);
+            } else {
+                desactivarCampos();
+            }
+        } catch (Exception e) {
+
         }
     }//GEN-LAST:event_jcbListaAlumnosActionPerformed
 

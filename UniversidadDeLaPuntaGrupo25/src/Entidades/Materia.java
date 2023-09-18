@@ -5,6 +5,8 @@
  */
 package Entidades;
 
+import java.util.regex.Pattern;
+
 /**
  *
  * @author Ezequiel
@@ -68,4 +70,16 @@ public class Materia {
         return "Materia{" + "idMateria=" + idMateria + ", nombre=" + nombre + ", anio=" + anio + ", estado=" + estado + '}';
     }
 
+    
+    public String validar(String nombre){
+        String validado = "";
+        String regex = "^[\\p{L}]{1,30}$";
+        
+         if (Pattern.matches(regex, nombre)) {
+            validado = nombre;
+        } else {
+            System.out.println("La cadena no es válida.");
+        }
+         return validado;
+    }
 }

@@ -9,9 +9,12 @@
             <file>file:/C:/Users/Ezequiel/Documents/GitHub/la25-ProyectoArgPrograma/UniversidadDeLaPuntaGrupo25/src/Vistas/GestionAlumnos.java</file>
             <file>file:/C:/Users/Ezequiel/Documents/GitHub/la25-ProyectoArgPrograma/UniversidadDeLaPuntaGrupo25/src/Vistas/MenuPrincipal.java</file>
             <file>file:/C:/Users/Ezequiel/Documents/GitHub/la25-ProyectoArgPrograma/UniversidadDeLaPuntaGrupo25/src/Vistas/ActualizarNotas.java</file>
-            <file>file:/C:/Users/Ezequiel/Documents/GitHub/la25-ProyectoArgPrograma/UniversidadDeLaPuntaGrupo25/src/AccesoADatos/InscripcionData.java</file>
+            <file>file:/C:/Users/Ezequiel/Documents/GitHub/la25-ProyectoArgPrograma/UniversidadDeLaPuntaGrupo25/src/AccesoADatos/Conexion.java</file>
+            <file>file:/C:/Users/Ezequiel/Documents/GitHub/la25-ProyectoArgPrograma/UniversidadDeLaPuntaGrupo25/src/Entidades/Alumno.java</file>
+            <file>file:/C:/Users/Ezequiel/Documents/GitHub/la25-ProyectoArgPrograma/UniversidadDeLaPuntaGrupo25/src/Entidades/Inscripcion.java</file>
             <file>file:/C:/Users/Ezequiel/Documents/GitHub/la25-ProyectoArgPrograma/UniversidadDeLaPuntaGrupo25/src/Vistas/FormulariodeInscripcion.java</file>
             <file>file:/C:/Users/Ezequiel/Documents/GitHub/la25-ProyectoArgPrograma/UniversidadDeLaPuntaGrupo25/src/Vistas/ConsultaAlumnosporMateria.java</file>
+            <file>file:/C:/Users/Ezequiel/Documents/GitHub/la25-ProyectoArgPrograma/UniversidadDeLaPuntaGrupo25/src/AccesoADatos/MateriaData.java</file>
             <file>file:/C:/Users/Ezequiel/Documents/GitHub/la25-ProyectoArgPrograma/UniversidadDeLaPuntaGrupo25/src/Vistas/GestionDeMateria.java</file>
         </group>
     </open-files>
