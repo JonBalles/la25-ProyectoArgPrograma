@@ -4,28 +4,19 @@
  */
 package Vistas;
 
+import java.awt.Color;
 import java.awt.Desktop;
+import java.net.URI;
 import javax.swing.JEditorPane;
+import javax.swing.JOptionPane;
 import javax.swing.event.HyperlinkEvent;
 
-/**
- *
- * @author Jon
- */
+
 public class AboutUs extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form AboutUs
-     */
+ 
     public AboutUs() {
-        String repo = "https://github.com/JonBalles/la25-ProyectoArgPrograma";
-        String trello = "https://trello.com/b/8c3RGe3M/proyecto-arg-programa";
-        
         initComponents();
-        setEditPanel(Repositorio, repo, "Repositorio en gitHub");
-        setEditPanel(Trello, trello, "Tablero de trabajo");
-        
-        
     }
 
     /**
@@ -39,31 +30,67 @@ public class AboutUs extends javax.swing.JInternalFrame {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jLabelEma = new javax.swing.JLabel();
+        jLabelEze = new javax.swing.JLabel();
+        jLabelJon = new javax.swing.JLabel();
         jbExit = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Repositorio = new javax.swing.JEditorPane();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        Trello = new javax.swing.JEditorPane();
+        jButtonGitHub = new javax.swing.JButton();
+        jButtonTrello = new javax.swing.JButton();
 
         setClosable(true);
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 36)); // NOI18N
         jLabel1.setText("Sobre nosotros");
 
-        jLabel2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Emanuel Schönfeld");
+        jLabelEma.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabelEma.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelEma.setText("Emanuel Schönfeld");
+        jLabelEma.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelEmaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabelEmaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabelEmaMouseExited(evt);
+            }
+        });
 
-        jLabel3.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Ezequiel Marrelli");
+        jLabelEze.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabelEze.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelEze.setText("Ezequiel Marrelli");
+        jLabelEze.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabelEzeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabelEzeMouseExited(evt);
+            }
+        });
 
-        jLabel4.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Jonatan Ballestero");
+        jLabelJon.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabelJon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelJon.setText("Jonatan Ballestero");
+        jLabelJon.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jLabelJonFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jLabelJonFocusLost(evt);
+            }
+        });
+        jLabelJon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelJonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabelJonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabelJonMouseExited(evt);
+            }
+        });
 
         jbExit.setText("Salir");
         jbExit.addActionListener(new java.awt.event.ActionListener() {
@@ -72,44 +99,59 @@ public class AboutUs extends javax.swing.JInternalFrame {
             }
         });
 
-        jScrollPane1.setViewportView(Repositorio);
+        jButtonGitHub.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jButtonGitHub.setText("Repositorio");
+        jButtonGitHub.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGitHubActionPerformed(evt);
+            }
+        });
 
-        jScrollPane2.setViewportView(Trello);
+        jButtonTrello.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jButtonTrello.setText("Tablero de trabajo");
+        jButtonTrello.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTrelloActionPerformed(evt);
+            }
+        });
 
         jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabelEma, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabelEze, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jLabelJon, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jbExit, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jScrollPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jButtonGitHub, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jButtonTrello, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                .addGap(0, 240, Short.MAX_VALUE)
+                .addGap(0, 216, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(225, 225, 225))
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74))
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGap(287, 287, 287)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)))
+                            .addComponent(jLabelJon, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelEze, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelEma)))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addGap(327, 327, 327)
                         .addComponent(jbExit)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                        .addComponent(jButtonTrello)
+                        .addGap(271, 271, 271))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                        .addComponent(jButtonGitHub)
+                        .addGap(291, 291, 291))))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,16 +159,16 @@ public class AboutUs extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(26, 26, 26)
-                .addComponent(jLabel2)
+                .addComponent(jLabelEma)
                 .addGap(50, 50, 50)
-                .addComponent(jLabel3)
+                .addComponent(jLabelEze)
                 .addGap(54, 54, 54)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(64, 64, 64)
+                .addComponent(jLabelJon)
+                .addGap(44, 44, 44)
+                .addComponent(jButtonTrello)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonGitHub)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addComponent(jbExit)
                 .addGap(17, 17, 17))
         );
@@ -135,9 +177,10 @@ public class AboutUs extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jDesktopPane1))
+                .addComponent(jDesktopPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,40 +197,83 @@ public class AboutUs extends javax.swing.JInternalFrame {
     dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jbExitActionPerformed
 
+    private void jLabelJonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelJonMouseClicked
+     String link = "https://www.linkedin.com/in/jonballes/";
+     addUrl(link);
+    }//GEN-LAST:event_jLabelJonMouseClicked
+
+    private void jLabelEmaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelEmaMouseClicked
+       String link = "https://www.linkedin.com/in/emanuel-schonfeld-691b67257/";
+       addUrl(link);
+    }//GEN-LAST:event_jLabelEmaMouseClicked
+
+    private void jButtonTrelloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTrelloActionPerformed
+       String link = "https://trello.com/b/8c3RGe3M/proyecto-arg-programa";
+       addUrl(link);
+    }//GEN-LAST:event_jButtonTrelloActionPerformed
+
+    private void jButtonGitHubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGitHubActionPerformed
+        String link = "https://github.com/JonBalles/la25-ProyectoArgPrograma";
+        addUrl(link);
+    }//GEN-LAST:event_jButtonGitHubActionPerformed
+
+    private void jLabelJonFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jLabelJonFocusGained
+        
+    }//GEN-LAST:event_jLabelJonFocusGained
+
+    
+    private void jLabelJonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelJonMouseEntered
+        jLabelJon.setForeground(Color.BLUE);
+    }//GEN-LAST:event_jLabelJonMouseEntered
+
+    private void jLabelJonFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jLabelJonFocusLost
+      
+    }//GEN-LAST:event_jLabelJonFocusLost
+
+    private void jLabelJonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelJonMouseExited
+          jLabelJon.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jLabelJonMouseExited
+
+    
+    private void jLabelEmaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelEmaMouseEntered
+        jLabelEma.setForeground(Color.BLUE);
+    }//GEN-LAST:event_jLabelEmaMouseEntered
+
+    private void jLabelEmaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelEmaMouseExited
+        jLabelEma.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jLabelEmaMouseExited
+
+    private void jLabelEzeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelEzeMouseEntered
+        jLabelEze.setForeground(Color.BLUE);
+    }//GEN-LAST:event_jLabelEzeMouseEntered
+
+    private void jLabelEzeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelEzeMouseExited
+        jLabelEze.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jLabelEzeMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JEditorPane Repositorio;
-    private javax.swing.JEditorPane Trello;
+    private javax.swing.JButton jButtonGitHub;
+    private javax.swing.JButton jButtonTrello;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel jLabelEma;
+    private javax.swing.JLabel jLabelEze;
+    private javax.swing.JLabel jLabelJon;
     private javax.swing.JButton jbExit;
     // End of variables declaration//GEN-END:variables
 
-private void setEditPanel(JEditorPane panel, String link, String titulo){
-        String url = "<html><a href=\'"+link+"'>"+ titulo +"</a></html>";
-        panel.setEditable(false);
-        panel.setContentType("text/html");
-        
-        // Agrega un enlace HTML
-        panel.setText(url);
 
-        // Agrega un listener para manejar los eventos de hipervínculo
-        panel.addHyperlinkListener(e -> {
-            if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-                // Abre el enlace en el navegador web
-                try {
-                    Desktop.getDesktop().browse(e.getURL().toURI());
-                } catch (Exception ex) {
-                    ex.printStackTrace();
+private void addUrl(String url){
+          try{
+            if(Desktop.isDesktopSupported()){
+                Desktop desktop = Desktop.getDesktop();
+                if(desktop.isSupported(Desktop.Action.BROWSE)){
+                    desktop.browse(new URI(url));
                 }
             }
-        });
+        } catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error");
+        }
 }
-
-
 }
