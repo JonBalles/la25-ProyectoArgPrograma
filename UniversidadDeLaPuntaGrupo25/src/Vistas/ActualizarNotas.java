@@ -44,7 +44,7 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
 
         setClosable(true);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel1.setText("Carga de notas");
 
         jLabel2.setText("Seleccione un alumno:");
@@ -68,14 +68,18 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTableAlumNota);
 
+        JButtonGuardarNota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/disk.png"))); // NOI18N
         JButtonGuardarNota.setText("Guardar");
+        JButtonGuardarNota.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         JButtonGuardarNota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JButtonGuardarNotaActionPerformed(evt);
             }
         });
 
+        jBSalirAlumNota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/logout.png"))); // NOI18N
         jBSalirAlumNota.setText("Salir");
+        jBSalirAlumNota.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jBSalirAlumNota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBSalirAlumNotaActionPerformed(evt);
@@ -121,7 +125,7 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JButtonGuardarNota)
                     .addComponent(jBSalirAlumNota))
-                .addGap(0, 19, Short.MAX_VALUE))
+                .addGap(0, 15, Short.MAX_VALUE))
         );
 
         pack();
