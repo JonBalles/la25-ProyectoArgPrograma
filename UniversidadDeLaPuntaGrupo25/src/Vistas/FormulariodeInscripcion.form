@@ -35,32 +35,19 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="460" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Component id="jbInscribir" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="jbAnular" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="82" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
               <Component id="Salir" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
           </Group>
-          <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" pref="232" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="165" max="-2" attributes="0"/>
-                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -75,6 +62,16 @@
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="165" max="-2" attributes="0"/>
+              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jLabel1" min="-2" pref="291" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -96,7 +93,7 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="195" max="-2" attributes="0"/>
-              <EmptySpace pref="74" max="32767" attributes="0"/>
+              <EmptySpace pref="40" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jbInscribir" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jbAnular" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -111,9 +108,9 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Dialog" size="18" style="1"/>
+          <Font name="Arial Black" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Formulario de Inscripcion"/>
+        <Property name="text" type="java.lang.String" value="Formulario de Inscripci&#xf3;n"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
@@ -188,7 +185,11 @@
     </Container>
     <Component class="javax.swing.JButton" name="jbInscribir">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Img/pen.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Inscribir"/>
+        <Property name="horizontalTextPosition" type="int" value="2"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbInscribirActionPerformed"/>
@@ -196,7 +197,11 @@
     </Component>
     <Component class="javax.swing.JButton" name="jbAnular">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Img/file.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Anular Inscripcion"/>
+        <Property name="horizontalTextPosition" type="int" value="2"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbAnularActionPerformed"/>
@@ -204,7 +209,11 @@
     </Component>
     <Component class="javax.swing.JButton" name="Salir">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Img/logout.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Salir"/>
+        <Property name="horizontalTextPosition" type="int" value="2"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SalirActionPerformed"/>

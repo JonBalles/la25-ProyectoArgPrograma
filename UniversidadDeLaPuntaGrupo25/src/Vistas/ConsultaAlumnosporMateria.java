@@ -6,7 +6,12 @@ import javax.swing.table.DefaultTableModel;
 
 public class ConsultaAlumnosporMateria extends javax.swing.JInternalFrame {
 
-    private DefaultTableModel modelo = new DefaultTableModel();
+    private DefaultTableModel modelo = new DefaultTableModel() {
+        @Override
+        public boolean isCellEditable(int f, int c) {
+            return false;
+        }
+    };
 
     public ConsultaAlumnosporMateria() {
         initComponents();
@@ -25,7 +30,7 @@ public class ConsultaAlumnosporMateria extends javax.swing.JInternalFrame {
         jtListaAlumnos = new javax.swing.JTable();
         jbSalir = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel1.setText("Listado de alumnos por materia");
 
         jLabel2.setText("Seleccione una materia:");
@@ -54,7 +59,9 @@ public class ConsultaAlumnosporMateria extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jtListaAlumnos);
 
+        jbSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/logout.png"))); // NOI18N
         jbSalir.setText("Salir");
+        jbSalir.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbSalirActionPerformed(evt);
@@ -71,19 +78,16 @@ public class ConsultaAlumnosporMateria extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jcbListaMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbSalir)
-                .addContainerGap())
+                .addComponent(jLabel1)
+                .addGap(32, 32, 32))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jbSalir)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,9 +99,9 @@ public class ConsultaAlumnosporMateria extends javax.swing.JInternalFrame {
                     .addComponent(jcbListaMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jbSalir)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
