@@ -6,19 +6,19 @@ import AccesoADatos.MateriaData;
 import javax.swing.JInternalFrame;
 
 public class MenuPrincipal extends javax.swing.JFrame {
-    
+
     public static AlumnoData alumnodata;
     public static MateriaData materiadata;
     public static InscripcionData inscripciondata;
-    
+
     public MenuPrincipal() {
         initComponents();
         this.alumnodata = new AlumnoData();
         this.materiadata = new MateriaData();
         this.inscripciondata = new InscripcionData();
-        
+
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -40,6 +40,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jmiInscripciones = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
@@ -141,6 +142,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem4);
 
+        jmiInscripciones.setText("Todas las Incripciones");
+        jmiInscripciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiInscripcionesActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jmiInscripciones);
+
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Consultas");
@@ -196,7 +205,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        
+
         GestionAlumnos gestionAlu = new GestionAlumnos();
         generarVentana(gestionAlu);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -223,14 +232,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        dispose();        
+        dispose();
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void ItemAboutUsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemAboutUsActionPerformed
         AboutUs sobreNos = new AboutUs();
         generarVentana(sobreNos);
     }//GEN-LAST:event_ItemAboutUsActionPerformed
-    
+
+    private void jmiInscripcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiInscripcionesActionPerformed
+        TodasLasInscripciones allInc = new TodasLasInscripciones();
+        generarVentana(allInc);
+    }//GEN-LAST:event_jmiInscripcionesActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -287,6 +301,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jmiInscripciones;
     // End of variables declaration//GEN-END:variables
    private void generarVentana(JInternalFrame panel) {
         escritorio.removeAll();
