@@ -70,24 +70,23 @@ public class AlumnoData {
     }
 
     public void eliminarAlumno(int id) {
-        String sql = "UPDATE alumno SET estado = ? WHERE idAlumno = ?";
-        PreparedStatement ps;
+            String sql = "UPDATE alumno SET estado = ? WHERE idAlumno = ?";
+            PreparedStatement ps;
+            try {
+                ps = con.prepareStatement(sql);
+                ps.setBoolean(1, false);
+                ps.setInt(2, id);
+                int rs = ps.executeUpdate();
+                if (rs == 1) {
+                    JOptionPane.showMessageDialog(null, "Se dio de baja al alumno");
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se pudo dar de baja al alumno");
+                }
+                ps.close();
 
-        try {
-            ps = con.prepareStatement(sql);
-            ps.setBoolean(1, false);
-            ps.setInt(2, id);
-            int rs = ps.executeUpdate();
-            if (rs == 1) {
-                JOptionPane.showMessageDialog(null, "Se dio de baja al alumno");
-            } else {
-                JOptionPane.showMessageDialog(null, "No se pudo dar de baja al alumno");
-            }
-            ps.close();
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al cargar la baja en la base de datos");
-        }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error al cargar la baja en la base de datos");
+            }       
     }
 
     public List<Alumno> listarAlumnos() {

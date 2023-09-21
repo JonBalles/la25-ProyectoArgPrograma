@@ -52,18 +52,6 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
 
         jLabel6.setText("Fecha de nacimiento");
 
-        jTNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTNombreActionPerformed(evt);
-            }
-        });
-
-        jRBEstado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRBEstadoActionPerformed(evt);
-            }
-        });
-
         jBBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Lupa.png"))); // NOI18N
         jBBuscar.setText("Buscar");
         jBBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -191,21 +179,26 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTNombreActionPerformed
-
+    //BOTON ELIMINAR
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
 
         if (!jTDNI.getText().isEmpty()) {
             int dni = Integer.parseInt(jTDNI.getText());
             int id = MenuPrincipal.alumnodata.buscarAlumnoPorDni(dni).getIdAlumno();
-            MenuPrincipal.alumnodata.eliminarAlumno(id);
+            
+            int response = JOptionPane.showConfirmDialog(null, "Esta seguro de dar de baja al alumno?", "Dar de baja", JOptionPane.YES_NO_OPTION);
+            
+            if (response == JOptionPane.YES_OPTION) {
+                MenuPrincipal.alumnodata.eliminarAlumno(id);
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo dar de baja al alumno");
+            }
+            resetearCampos();
+            desactivarCampos();
         }
-        resetearCampos();
-        desactivarCampos();
     }//GEN-LAST:event_jBEliminarActionPerformed
 
+    //BOTON GUARDAR/EDITAR
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         Alumno alumValidar = new Alumno();
         jTApellido.setText(alumValidar.validar(jTApellido.getText()));
@@ -242,16 +235,14 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_jBGuardarActionPerformed
-
+    
+    //BOTON SALIR
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
         //Elimina todos los subprocesos
         dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
 
-    private void jRBEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBEstadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRBEstadoActionPerformed
-
+    //BOTON BUSCAR
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
         int dni;
         Alumno alu;
@@ -276,13 +267,17 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "Debe ingresar Dni correctamente");
             }
         }
+        jRBEstado.setEnabled(false);
     }//GEN-LAST:event_jBBuscarActionPerformed
-
+    
+    //BOTON NUEVO
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
         this.editar = false;
         activarCampos();
         jBEliminar.setEnabled(false);
         resetearCampos();
+        jRBEstado.setSelected(true);
+        jRBEstado.setEnabled(false);
     }//GEN-LAST:event_jBNuevoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

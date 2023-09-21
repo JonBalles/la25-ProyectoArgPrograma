@@ -4,12 +4,6 @@
  */
 package Entidades;
 
-import java.util.regex.Pattern;
-
-/**
- *
- * @author Jon
- */
 public interface Utiles {
      public String validar(String nombre);
      
