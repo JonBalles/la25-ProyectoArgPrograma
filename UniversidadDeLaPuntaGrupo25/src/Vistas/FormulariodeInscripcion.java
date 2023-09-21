@@ -44,6 +44,7 @@ public class FormulariodeInscripcion extends javax.swing.JInternalFrame {
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
 
+        setClosable(true);
         setResizable(true);
         setEnabled(false);
 

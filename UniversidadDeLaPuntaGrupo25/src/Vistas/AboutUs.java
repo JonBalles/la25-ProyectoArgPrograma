@@ -92,7 +92,10 @@ public class AboutUs extends javax.swing.JInternalFrame {
             }
         });
 
+        jbExit.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jbExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/logout.png"))); // NOI18N
         jbExit.setText("Salir");
+        jbExit.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jbExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbExitActionPerformed(evt);
@@ -132,16 +135,11 @@ public class AboutUs extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addGap(225, 225, 225))
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                .addGap(287, 287, 287)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(287, 287, 287)
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelJon, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelEze, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelEma)))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(327, 327, 327)
-                        .addComponent(jbExit)))
+                    .addComponent(jLabelJon, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelEze, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelEma))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -151,7 +149,10 @@ public class AboutUs extends javax.swing.JInternalFrame {
                         .addGap(271, 271, 271))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                         .addComponent(jButtonGitHub)
-                        .addGap(291, 291, 291))))
+                        .addGap(291, 291, 291))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                        .addComponent(jbExit)
+                        .addGap(306, 306, 306))))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,11 +167,11 @@ public class AboutUs extends javax.swing.JInternalFrame {
                 .addComponent(jLabelJon)
                 .addGap(44, 44, 44)
                 .addComponent(jButtonTrello)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(30, 30, 30)
                 .addComponent(jButtonGitHub)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(jbExit)
-                .addGap(17, 17, 17))
+                .addGap(30, 30, 30))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

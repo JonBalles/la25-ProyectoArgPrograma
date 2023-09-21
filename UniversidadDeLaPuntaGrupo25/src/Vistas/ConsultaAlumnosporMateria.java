@@ -30,6 +30,8 @@ public class ConsultaAlumnosporMateria extends javax.swing.JInternalFrame {
         jtListaAlumnos = new javax.swing.JTable();
         jbSalir = new javax.swing.JButton();
 
+        setClosable(true);
+
         jLabel1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel1.setText("Listado de alumnos por materia");
 

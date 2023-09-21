@@ -39,6 +39,7 @@ public class GestionDeMateria extends javax.swing.JInternalFrame {
 
         jButton1.setText("jButton1");
 
+        setClosable(true);
         setPreferredSize(new java.awt.Dimension(472, 407));
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N

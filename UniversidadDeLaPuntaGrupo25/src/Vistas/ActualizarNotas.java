@@ -213,12 +213,17 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
             //nota de la materia
             int columnaNota = 2;
             int tomarNota = Integer.parseInt(jTableAlumNota.getValueAt(filaSeleccionada, columnaNota).toString());
-
+            
             //IdMateria llega como objeto al cual casteo a String.
             //Valido que el campo no este vacio minimizando el indice de error
-            //Ejecuto la modificacion de la nota en la base de datos
-            insData.actualizarNota(idAlumno, idMateria, tomarNota);
+            
 
+            if(tomarNota < 0 || tomarNota > 10){
+                JOptionPane.showMessageDialog(null, "La nota respeta un rango entre 0 y 10");
+            }else{
+                //Ejecuto la modificacion de la nota en la base de datos
+                insData.actualizarNota(idAlumno, idMateria, tomarNota);
+            }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "No puedes utilizar otro tipo de dato que no sea un entero");
         }
