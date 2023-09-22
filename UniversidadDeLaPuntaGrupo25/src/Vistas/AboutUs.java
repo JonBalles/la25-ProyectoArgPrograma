@@ -61,6 +61,9 @@ public class AboutUs extends javax.swing.JInternalFrame {
         jLabelEze.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelEze.setText("Ezequiel Marrelli");
         jLabelEze.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelEzeMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabelEzeMouseEntered(evt);
             }
@@ -72,14 +75,6 @@ public class AboutUs extends javax.swing.JInternalFrame {
         jLabelJon.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jLabelJon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelJon.setText("Jonatan Ballestero");
-        jLabelJon.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jLabelJonFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jLabelJonFocusLost(evt);
-            }
-        });
         jLabelJon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabelJonMouseClicked(evt);
@@ -218,18 +213,10 @@ public class AboutUs extends javax.swing.JInternalFrame {
         addUrl(link);
     }//GEN-LAST:event_jButtonGitHubActionPerformed
 
-    private void jLabelJonFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jLabelJonFocusGained
-        
-    }//GEN-LAST:event_jLabelJonFocusGained
-
     
     private void jLabelJonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelJonMouseEntered
         jLabelJon.setForeground(Color.BLUE);
     }//GEN-LAST:event_jLabelJonMouseEntered
-
-    private void jLabelJonFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jLabelJonFocusLost
-      
-    }//GEN-LAST:event_jLabelJonFocusLost
 
     private void jLabelJonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelJonMouseExited
           jLabelJon.setForeground(Color.BLACK);
@@ -251,6 +238,11 @@ public class AboutUs extends javax.swing.JInternalFrame {
     private void jLabelEzeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelEzeMouseExited
         jLabelEze.setForeground(Color.BLACK);
     }//GEN-LAST:event_jLabelEzeMouseExited
+
+    private void jLabelEzeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelEzeMouseClicked
+         String link = "https://www.linkedin.com/in/ezequiel-nicolas-marrelli-a67941292/";
+        addUrl(link);
+    }//GEN-LAST:event_jLabelEzeMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
