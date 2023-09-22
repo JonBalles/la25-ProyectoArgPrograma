@@ -54,7 +54,7 @@ public class AlumnoData {
             ps.setInt(1, alumno.getDni());
             ps.setString(2, alumno.getApellido());
             ps.setString(3, alumno.getNombre());
-            ps.setDate(4, Date.valueOf(alumno.getFechaNac()));         
+            ps.setDate(4, Date.valueOf(alumno.getFechaNac()));
             ps.setInt(5, alumno.getIdAlumno());
             int rs = ps.executeUpdate();
             if (rs == 1) {
@@ -70,23 +70,22 @@ public class AlumnoData {
     }
 
     public void eliminarAlumno(int id) {
-            String sql = "UPDATE alumno SET estado = ? WHERE idAlumno = ?";
-            PreparedStatement ps;
-            try {
-                ps = con.prepareStatement(sql);
-                ps.setBoolean(1, false);
-                ps.setInt(2, id);
-                int rs = ps.executeUpdate();
-                if (rs == 1) {
-                    JOptionPane.showMessageDialog(null, "Se dio de baja al alumno");
-                } else {
-                    JOptionPane.showMessageDialog(null, "No se pudo dar de baja al alumno");
-                }
-                ps.close();
+        String sql = "UPDATE alumno SET estado = false WHERE idAlumno = ?";
+        PreparedStatement ps;
+        try {
+            ps = con.prepareStatement(sql);      
+            ps.setInt(1, id);
+            int rs = ps.executeUpdate();
+            if (rs == 1) {
+                JOptionPane.showMessageDialog(null, "Se dio de baja al alumno");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo dar de baja al alumno");
+            }
+            ps.close();
 
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Error al cargar la baja en la base de datos");
-            }       
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al cargar la baja en la base de datos");
+        }
     }
 
     public List<Alumno> listarAlumnos() {
@@ -163,5 +162,24 @@ public class AlumnoData {
         }
 
         return alumno;
+    }
+
+    public void reActivarAlumno(int id) {
+        String sql = "UPDATE alumno SET estado = true WHERE idAlumno = ?";
+        PreparedStatement ps;
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            int rs = ps.executeUpdate();
+            if (rs == 1) {
+                JOptionPane.showMessageDialog(null, "Se dio de alta al alumno");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo reactivar al alumno");
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error el alta al alumno la base de datos");
+        }
     }
 }

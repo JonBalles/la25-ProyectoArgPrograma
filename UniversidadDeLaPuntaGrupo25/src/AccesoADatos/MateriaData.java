@@ -1,6 +1,5 @@
 package AccesoADatos;
 
-
 import Entidades.Materia;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,38 +11,38 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 public class MateriaData {
+
     private Connection con;
 
     public MateriaData() {
         this.con = Conexion.getConexion();
     }
-    
-    public void guardarMateria(Materia materia){
-           String sql = "INSERT INTO materia(nombre, año, estado) VALUES (?,?,1)";
+
+    public void guardarMateria(Materia materia) {
+        String sql = "INSERT INTO materia(nombre, año, estado) VALUES (?,?,1)";
         PreparedStatement ps;
-        
+
         try {
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-           
-            
+
             ps.setString(1, materia.getNombre());
             ps.setInt(2, materia.getAnio());
-            
+
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
-            
+
             if (rs.next()) {
                 materia.setIdMateria(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "Materia guardada");
             }
             ps.close();
-            
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al cargar materia en la base de datos");
         }
-        
+
     }
-    
+
     public Materia buscarMateria(int id) {
         Materia materia = null;
         String sql = ("SELECT idMateria, nombre, año, estado FROM materia WHERE idMateria=?");
@@ -57,7 +56,7 @@ public class MateriaData {
                 materia.setIdMateria(rs.getInt("idMateria"));
                 materia.setNombre(rs.getString("nombre"));
                 materia.setAnio(rs.getInt("año"));
-                materia.setEstado(rs.getBoolean("estado"));
+                materia.setEstado(rs.getBoolean("estado"));              
             }
 
         } catch (SQLException ex) {
@@ -66,8 +65,8 @@ public class MateriaData {
 
         return materia;
     }
-    
-    public void modificarMateria(Materia materia){
+
+    public void modificarMateria(Materia materia) {
         String sql = "UPDATE materia SET nombre = ? , año = ? WHERE idMateria = ?";
         PreparedStatement ps;
         try {
@@ -89,15 +88,14 @@ public class MateriaData {
 
         }
     }
-    
-    public void eliminarMateria(int id){
-        String sql = "UPDATE materia SET estado = ? WHERE idMateria = ?";
+
+    public void eliminarMateria(int id) {
+        String sql = "UPDATE materia SET estado = false WHERE idMateria = ?";
         PreparedStatement ps;
-        
+
         try {
             ps = con.prepareStatement(sql);
-            ps.setBoolean(1, false);
-            ps.setInt(2, id);
+            ps.setInt(1, id);
             int rs = ps.executeUpdate();
             if (rs == 1) {
                 JOptionPane.showMessageDialog(null, "Se dio de baja la materia");
@@ -105,13 +103,13 @@ public class MateriaData {
                 JOptionPane.showMessageDialog(null, "No se pudo dar de baja la materia");
             }
             ps.close();
-            
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al cargar la baja en la base de datos");
         }
     }
-    
-    public List<Materia> listarMaterias(){
+
+    public List<Materia> listarMaterias() {
         List<Materia> lista = new ArrayList<>();
         Materia materia = null;
         String sql = "SELECT idMateria, nombre, año FROM materia WHERE estado=1";
@@ -127,14 +125,31 @@ public class MateriaData {
                 materia.setEstado(true);
                 lista.add(materia);
             }
-          ps.close();
+            ps.close();
         } catch (SQLException ex) {
-          JOptionPane.showMessageDialog(null, "Error al cargar la baja en la base de datos");
+            JOptionPane.showMessageDialog(null, "Error al cargar la baja en la base de datos");
         }
-        
+
         return lista;
     }
-    
-    
-    
+
+    public void reActivarAlumno(int id) {
+        String sql = "UPDATE materia SET estado = true WHERE idMateria= ?";
+        PreparedStatement ps;
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            int rs = ps.executeUpdate();
+            if (rs == 1) {
+                JOptionPane.showMessageDialog(null, "Se dio de alta la materia");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo reactivar la materia");
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error el alta de materia en la base de datos");
+        }
+    }
+
 }
