@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -34,7 +35,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         jTNombre = new javax.swing.JTextField();
         jBBuscar = new javax.swing.JButton();
         jBNuevo = new javax.swing.JButton();
-        jBEliminar = new javax.swing.JButton();
+        jBBajaAlta = new javax.swing.JButton();
         jBGuardar = new javax.swing.JButton();
         jBSalir = new javax.swing.JButton();
         jpEstado = new javax.swing.JPanel();
@@ -72,11 +73,11 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
             }
         });
 
-        jBEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/trash.png"))); // NOI18N
-        jBEliminar.setText("Eliminar");
-        jBEliminar.addActionListener(new java.awt.event.ActionListener() {
+        jBBajaAlta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/download.png"))); // NOI18N
+        jBBajaAlta.setText("Baja");
+        jBBajaAlta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBEliminarActionPerformed(evt);
+                jBBajaAltaActionPerformed(evt);
             }
         });
 
@@ -137,7 +138,6 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel6)
                                 .addGap(47, 47, 47)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jDCFechaN, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jTNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
@@ -145,7 +145,13 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
                                     .addComponent(jTDNI)
                                     .addComponent(jpEstado, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(33, 33, 33)
-                                .addComponent(jBBuscar)))))
+                                .addComponent(jBBuscar))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jBGuardar)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jBSalir))
+                                .addComponent(jDCFechaN, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(23, 23, 23))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,13 +161,9 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addComponent(jBNuevo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jBEliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jBGuardar)
                         .addGap(18, 18, 18)
-                        .addComponent(jBSalir)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jBBajaAlta)))
+                .addContainerGap(207, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,7 +194,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
                 .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBNuevo)
-                    .addComponent(jBEliminar)
+                    .addComponent(jBBajaAlta)
                     .addComponent(jBGuardar)
                     .addComponent(jBSalir))
                 .addGap(19, 19, 19))
@@ -202,13 +204,13 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     //BOTON ELIMINAR
-    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
+    private void jBBajaAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBajaAltaActionPerformed
 
         if (!jTDNI.getText().isEmpty()) {
             int dni = Integer.parseInt(jTDNI.getText());
             int id = MenuPrincipal.alumnodata.buscarAlumnoPorDni(dni).getIdAlumno();
             int response;
-           if (jRBEstado.isSelected()) {
+            if (jRBEstado.isSelected()) {
                 response = JOptionPane.showConfirmDialog(null, "Esta seguro de dar de baja al alumno?", "Dar de baja", JOptionPane.YES_NO_OPTION);
 
                 if (response == JOptionPane.YES_OPTION) {
@@ -228,13 +230,13 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
             resetearCampos();
             desactivarCampos();
         }
-    }//GEN-LAST:event_jBEliminarActionPerformed
+    }//GEN-LAST:event_jBBajaAltaActionPerformed
 
     //BOTON GUARDAR/EDITAR
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-        Alumno alumValidar = new Alumno();
-        jTApellido.setText(alumValidar.validar(jTApellido.getText()));
-        jTNombre.setText(alumValidar.validar(jTNombre.getText()));
+
+        jTApellido.setText(validar(jTApellido.getText()));
+        jTNombre.setText(validar(jTNombre.getText()));
 
         if (jTDNI.getText().isEmpty() || jTApellido.getText().isEmpty() || jTNombre.getText().isEmpty() || jDCFechaN.toString().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Llene los campos correctamente");
@@ -306,14 +308,14 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
         this.editar = false;
         activarCampos();
-        jBEliminar.setEnabled(false);
+        jBBajaAlta.setEnabled(false);
         resetearCampos();
         jRBEstado.setSelected(true);
     }//GEN-LAST:event_jBNuevoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBBajaAlta;
     private javax.swing.JButton jBBuscar;
-    private javax.swing.JButton jBEliminar;
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBNuevo;
     private javax.swing.JButton jBSalir;
@@ -346,7 +348,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
     private void desactivarCampos() {
 
         jBGuardar.setEnabled(false);
-        jBEliminar.setEnabled(false);
+        jBBajaAlta.setEnabled(false);
         jTApellido.setEnabled(false);
         jTNombre.setEnabled(false);
         jDCFechaN.setEnabled(false);
@@ -356,7 +358,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
     private void activarCampos() {
 
         jBGuardar.setEnabled(true);
-        jBEliminar.setEnabled(true);
+        jBBajaAlta.setEnabled(true);
         jTApellido.setEnabled(true);
         jTNombre.setEnabled(true);
         jDCFechaN.setEnabled(true);
@@ -364,15 +366,26 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
 
     private void botonIcon(boolean estado) {
         if (estado) {
-            jBEliminar.setIcon(new ImageIcon(getClass().getResource("/Img/trash.png")));
-            jBEliminar.setText("Eliminar");
+            jBBajaAlta.setIcon(new ImageIcon(getClass().getResource("/Img/download.png")));
+            jBBajaAlta.setText("Baja");
             jRBEstado.setText("Activo");
             jpEstado.setBackground(Color.GREEN);
         } else {
-            jBEliminar.setIcon(new ImageIcon(getClass().getResource("/Img/active.png")));
-            jBEliminar.setText("Reactivar");
+            jBBajaAlta.setIcon(new ImageIcon(getClass().getResource("/Img/active.png")));
+            jBBajaAlta.setText("Alta");
             jRBEstado.setText("Desactivo");
             jpEstado.setBackground(Color.RED);
         }
     }
+
+    public static String validar(String nombre) {
+        String validado = "";
+        String regex = "^[A-Za-z\\s]+$";
+
+        if (Pattern.matches(regex, nombre)) {
+            validado = nombre;
+        }
+        return validado;
+    }
+
 }

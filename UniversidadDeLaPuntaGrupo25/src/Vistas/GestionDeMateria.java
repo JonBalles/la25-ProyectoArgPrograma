@@ -2,6 +2,7 @@ package Vistas;
 
 import Entidades.Materia;
 import java.awt.Color;
+import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -60,8 +61,8 @@ public class GestionDeMateria extends javax.swing.JInternalFrame {
             }
         });
 
-        jbEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/trash.png"))); // NOI18N
-        jbEliminar.setText("Eliminar");
+        jbEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/download.png"))); // NOI18N
+        jbEliminar.setText("Baja");
         jbEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbEliminarActionPerformed(evt);
@@ -121,9 +122,9 @@ public class GestionDeMateria extends javax.swing.JInternalFrame {
                         .addComponent(jbNuevo)
                         .addGap(18, 18, 18)
                         .addComponent(jbEliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jbGuardar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(jbSalir)
                         .addGap(30, 30, 30))
                     .addGroup(layout.createSequentialGroup()
@@ -132,7 +133,7 @@ public class GestionDeMateria extends javax.swing.JInternalFrame {
                             .addComponent(jLabel4)
                             .addComponent(jLabel5)
                             .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jBuscar)
@@ -269,9 +270,8 @@ public class GestionDeMateria extends javax.swing.JInternalFrame {
 
     //BOTON GUARDAR / EDITAR
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
-        jtCodigo.setEnabled(true);
-        Materia mateValidar = new Materia();
-        jtNombre.setText(mateValidar.validar(jtNombre.getText()));
+
+        jtNombre.setText(validar(jtNombre.getText()));
 
         if (jtNombre.getText().isEmpty() || jtAnio.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Llene los campos correctamente");
@@ -292,6 +292,7 @@ public class GestionDeMateria extends javax.swing.JInternalFrame {
 
                 if (mate2 == null) {
                     MenuPrincipal.materiadata.guardarMateria(mate);
+                    jtCodigo.setEnabled(true);
                 } else if (this.editar) {
                     mate.setIdMateria(mate2.getIdMateria());
                     MenuPrincipal.materiadata.modificarMateria(mate);
@@ -351,20 +352,30 @@ public class GestionDeMateria extends javax.swing.JInternalFrame {
         jbGuardar.setEnabled(true);
         jbEliminar.setEnabled(true);
         jtNombre.setEnabled(true);
-        jtAnio.setEnabled(true);      
+        jtAnio.setEnabled(true);
     }
 
     private void botonIcon(boolean estado) {
         if (estado) {
-            jbEliminar.setIcon(new ImageIcon(getClass().getResource("/Img/trash.png")));
-            jbEliminar.setText("Eliminar");
+            jbEliminar.setIcon(new ImageIcon(getClass().getResource("/Img/download.png")));
+            jbEliminar.setText("Baja");
             jrbEstado.setText("Activo");
             jpEstado.setBackground(Color.GREEN);
         } else {
             jbEliminar.setIcon(new ImageIcon(getClass().getResource("/Img/active.png")));
-            jbEliminar.setText("Reactivar");
+            jbEliminar.setText("Alta");
             jrbEstado.setText("Desactivo");
             jpEstado.setBackground(Color.RED);
         }
+    }
+
+    public static String validar(String nombre) {
+        String validado = "";
+        String regex = "^[A-Za-z\\s]+$";
+
+        if (Pattern.matches(regex, nombre)) {
+            validado = nombre;
+        }
+        return validado;
     }
 }

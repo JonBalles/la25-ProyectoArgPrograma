@@ -1,17 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Entidades;
 
-import java.util.regex.Pattern;
-
-/**
- *
- * @author Ezequiel
- */
-public class Materia implements Utiles {
+public class Materia {
      private int idMateria;
     private String nombre;
     private int anio;
@@ -70,16 +59,4 @@ public class Materia implements Utiles {
         return "Materia{" + "idMateria=" + idMateria + ", nombre=" + nombre + ", anio=" + anio + ", estado=" + estado + '}';
     }
 
-    @Override
-    public String validar(String nombre){
-        String validado = "";
-        String regex = "^[A-Za-z\\s]+$";
-        
-         if (Pattern.matches(regex, nombre)) {
-            validado = nombre;
-        } else {
-            System.out.println("La cadena no es válida.");
-        }
-         return validado;
-    }
 }
