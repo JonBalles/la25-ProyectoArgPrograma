@@ -212,7 +212,7 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
         try {
             //nota de la materia
             int columnaNota = 2;
-            int tomarNota = Integer.parseInt(jTableAlumNota.getValueAt(filaSeleccionada, columnaNota).toString());
+            double tomarNota = Double.parseDouble(jTableAlumNota.getValueAt(filaSeleccionada, columnaNota).toString());
             
             //IdMateria llega como objeto al cual casteo a String.
             //Valido que el campo no este vacio minimizando el indice de error
@@ -225,7 +225,7 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
                 insData.actualizarNota(idAlumno, idMateria, tomarNota);
             }
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "No puedes utilizar otro tipo de dato que no sea un entero");
+            JOptionPane.showMessageDialog(null, "Tipo de dato invalido. Intente nuevamente");
         }
     }
 }
