@@ -30,7 +30,7 @@ public class InscripcionData {
 
         try {
             ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, ins.getNota());
+            ps.setDouble(1, ins.getNota());
             ps.setInt(2, ins.getAlumno().getIdAlumno());
             ps.setInt(3, ins.getMateria().getIdMateria());
 
@@ -60,7 +60,7 @@ public class InscripcionData {
             while (rs.next()) {
                 ins = new Inscripcion();
                 ins.setIdInscripcion(rs.getInt("idInscripto"));
-                ins.setNota(rs.getInt("nota"));
+                ins.setNota(rs.getDouble("nota"));
                 ins.setAlumno(alumData.buscarAlumnoPorId(rs.getInt("idAlumno")));
                 ins.setMateria(matData.buscarMateria(rs.getInt("idMateria")));
                 lista.add(ins);
@@ -86,7 +86,7 @@ public class InscripcionData {
             while (rs.next()) {
                 ins = new Inscripcion();
                 ins.setIdInscripcion(rs.getInt("idInscripto"));
-                ins.setNota(rs.getInt("nota"));
+                ins.setNota(rs.getDouble("nota"));
                 ins.setAlumno(alumData.buscarAlumnoPorId(rs.getInt("idAlumno")));
                 ins.setMateria(matData.buscarMateria(rs.getInt("idMateria")));
                 lista.add(ins);
@@ -177,7 +177,7 @@ public class InscripcionData {
         PreparedStatement ps;
         try {
             ps = con.prepareStatement(sql);
-            ps.setInt(1, nota);
+            ps.setDouble(1, nota);
             ps.setInt(2, idAlumno);
             ps.setInt(3, idMateria);
 
