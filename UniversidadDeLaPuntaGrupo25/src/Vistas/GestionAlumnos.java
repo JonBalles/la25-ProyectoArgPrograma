@@ -2,6 +2,7 @@ package Vistas;
 
 import Entidades.Alumno;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
@@ -56,6 +57,12 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         jLabel5.setText("Estado");
 
         jLabel6.setText("Fecha de nacimiento");
+
+        jTDNI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTDNIKeyPressed(evt);
+            }
+        });
 
         jBBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Lupa.png"))); // NOI18N
         jBBuscar.setText("Buscar");
@@ -312,6 +319,12 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         resetearCampos();
         jRBEstado.setSelected(true);
     }//GEN-LAST:event_jBNuevoActionPerformed
+
+    private void jTDNIKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTDNIKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jBBuscarActionPerformed(null);
+        }
+    }//GEN-LAST:event_jTDNIKeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBajaAlta;

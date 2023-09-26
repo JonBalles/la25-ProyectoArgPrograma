@@ -4,6 +4,7 @@ import AccesoADatos.AlumnoData;
 import AccesoADatos.InscripcionData;
 import Entidades.Alumno;
 import Entidades.Inscripcion;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -23,6 +24,8 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
         initComponents();
         armarCabecera();
         cargarCombo();
+       
+        
     }
 
     /**
@@ -43,6 +46,11 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
         jBSalirAlumNota = new javax.swing.JButton();
 
         setClosable(true);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel1.setText("Carga de notas");
@@ -66,6 +74,11 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTableAlumNota.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTableAlumNotaKeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableAlumNota);
 
         JButtonGuardarNota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/disk.png"))); // NOI18N
@@ -146,6 +159,14 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
         editNota();
     }//GEN-LAST:event_JButtonGuardarNotaActionPerformed
 
+    private void jTableAlumNotaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTableAlumNotaKeyPressed
+ 
+    }//GEN-LAST:event_jTableAlumNotaKeyPressed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+      
+    }//GEN-LAST:event_formKeyPressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JButtonGuardarNota;
@@ -197,35 +218,33 @@ public class ActualizarNotas extends javax.swing.JInternalFrame {
     }
 
     private void editNota() {
-        //Seleccionamos la fila
-        int filaSeleccionada = jTableAlumNota.getSelectedRow();
-
-        //id Alumno
-        String[] alumno = jComboAlumNotas.getSelectedItem().toString().split(", ");
-        int dniAlumno = Integer.parseInt(alumno[0]);
-        int idAlumno = datos.buscarAlumnoPorDni(dniAlumno).getIdAlumno();
-
-        //id Materia
-        int columnaIdMateria = 0;
-        int idMateria = (int) jTableAlumNota.getValueAt(filaSeleccionada, columnaIdMateria);
-
         try {
+            //Seleccionamos la fila
+            int filaSeleccionada = jTableAlumNota.getSelectedRow();
+
+            //id Alumno
+            String[] alumno = jComboAlumNotas.getSelectedItem().toString().split(", ");
+            int dniAlumno = Integer.parseInt(alumno[0]);
+            int idAlumno = datos.buscarAlumnoPorDni(dniAlumno).getIdAlumno();
+
+            //id Materia
+            int columnaIdMateria = 0;
+            int idMateria = (int) jTableAlumNota.getValueAt(filaSeleccionada, columnaIdMateria);
             //nota de la materia
             int columnaNota = 2;
             double tomarNota = Double.parseDouble(jTableAlumNota.getValueAt(filaSeleccionada, columnaNota).toString());
-            
-            //IdMateria llega como objeto al cual casteo a String.
-            //Valido que el campo no este vacio minimizando el indice de error
-            
 
-            if(tomarNota < 0 || tomarNota > 10){
+            if (tomarNota < 0 || tomarNota > 10) {
                 JOptionPane.showMessageDialog(null, "La nota respeta un rango entre 0 y 10");
-            }else{
+            } else {
                 //Ejecuto la modificacion de la nota en la base de datos
                 insData.actualizarNota(idAlumno, idMateria, tomarNota);
             }
+        } catch(ArrayIndexOutOfBoundsException e){
+                        JOptionPane.showMessageDialog(null, "No a seleccionado ninguna fila.");
+
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Tipo de dato invalido. Intente nuevamente");
+            JOptionPane.showMessageDialog(null, "Error en tipo de dato. Intente nuevamente");
         }
     }
 }
