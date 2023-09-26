@@ -3,6 +3,7 @@ package Vistas;
 import Entidades.Alumno;
 import Entidades.Inscripcion;
 import Entidades.Materia;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class FormulariodeInscripcion extends javax.swing.JInternalFrame {
@@ -188,15 +189,18 @@ public class FormulariodeInscripcion extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbAnularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAnularActionPerformed
-
-        int fila = jtListaMaterias.getSelectedRow();
-        int idMateria = Integer.parseInt(jtListaMaterias.getValueAt(fila, 0).toString());
-        String[] comboBox = jcbListaAlumnos.getSelectedItem().toString().split(",");
-        int dni = Integer.parseInt(comboBox[0].trim());
-        int idAlumno = MenuPrincipal.alumnodata.buscarAlumnoPorDni(dni).getIdAlumno();
-        MenuPrincipal.inscripciondata.borrarInscripcionMateriaAlumno(idAlumno, idMateria);
-        bgMaterias.clearSelection();
-        borraFilas();
+        try {
+            int fila = jtListaMaterias.getSelectedRow();
+            int idMateria = Integer.parseInt(jtListaMaterias.getValueAt(fila, 0).toString());
+            String[] comboBox = jcbListaAlumnos.getSelectedItem().toString().split(",");
+            int dni = Integer.parseInt(comboBox[0].trim());
+            int idAlumno = MenuPrincipal.alumnodata.buscarAlumnoPorDni(dni).getIdAlumno();
+            MenuPrincipal.inscripciondata.borrarInscripcionMateriaAlumno(idAlumno, idMateria);
+            bgMaterias.clearSelection();
+            borraFilas();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Debe elegir una fila");
+        }
     }//GEN-LAST:event_jbAnularActionPerformed
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
@@ -226,17 +230,21 @@ public class FormulariodeInscripcion extends javax.swing.JInternalFrame {
 
     private void jbInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInscribirActionPerformed
         //Recuperar Id Materia de la tabla
-        int fila = jtListaMaterias.getSelectedRow();
-        int idMateria = Integer.parseInt(jtListaMaterias.getValueAt(fila, 0).toString());
-        //Recuperar Id Alumno del combo box
-        String[] comboBox = jcbListaAlumnos.getSelectedItem().toString().split(",");
-        int dni = Integer.parseInt(comboBox[0].trim());
-        Alumno alumno = MenuPrincipal.alumnodata.buscarAlumnoPorDni(dni);
-        Materia materia = MenuPrincipal.materiadata.buscarMateria(idMateria);
-        Inscripcion ins = new Inscripcion(0, alumno, materia);
-        MenuPrincipal.inscripciondata.guardarInscripcion(ins);
-        bgMaterias.clearSelection();
-        borraFilas();
+        try {
+            int fila = jtListaMaterias.getSelectedRow();
+            int idMateria = Integer.parseInt(jtListaMaterias.getValueAt(fila, 0).toString());
+            //Recuperar Id Alumno del combo box
+            String[] comboBox = jcbListaAlumnos.getSelectedItem().toString().split(",");
+            int dni = Integer.parseInt(comboBox[0].trim());
+            Alumno alumno = MenuPrincipal.alumnodata.buscarAlumnoPorDni(dni);
+            Materia materia = MenuPrincipal.materiadata.buscarMateria(idMateria);
+            Inscripcion ins = new Inscripcion(0, alumno, materia);
+            MenuPrincipal.inscripciondata.guardarInscripcion(ins);
+            bgMaterias.clearSelection();
+            borraFilas();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Debe elegir una fila");
+        }
     }//GEN-LAST:event_jbInscribirActionPerformed
 
     private void jcbListaAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbListaAlumnosActionPerformed

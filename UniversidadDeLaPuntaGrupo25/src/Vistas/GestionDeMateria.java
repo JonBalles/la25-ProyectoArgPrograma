@@ -377,7 +377,7 @@ public class GestionDeMateria extends javax.swing.JInternalFrame {
         } else {
             jbEliminar.setIcon(new ImageIcon(getClass().getResource("/Img/active.png")));
             jbEliminar.setText("Alta");
-            jrbEstado.setText("Desactivo");
+            jrbEstado.setText("Inactivo");
             jpEstado.setBackground(Color.RED);
         }
     }
