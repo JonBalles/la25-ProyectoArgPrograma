@@ -16,7 +16,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.alumnodata = new AlumnoData();
         this.materiadata = new MateriaData();
         this.inscripciondata = new InscripcionData();
-
+        setTitle("Proyecto transversal");
     }
 
     @SuppressWarnings("unchecked")
@@ -29,9 +29,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu6 = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
         escritorio = new javax.swing.JDesktopPane();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        logo1 = new javax.swing.JLabel();
+        logo2 = new javax.swing.JLabel();
+        logo3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -60,18 +60,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/ULP.png"))); // NOI18N
+        logo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/ULP.png"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel2.setText("Powered by");
+        logo2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        logo2.setText("Powered by");
 
-        jLabel3.setFont(new java.awt.Font("sansserif", 1, 28)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("ULP");
+        logo3.setFont(new java.awt.Font("sansserif", 1, 28)); // NOI18N
+        logo3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logo3.setText("ULP");
 
-        escritorio.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        escritorio.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        escritorio.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        escritorio.setLayer(logo1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        escritorio.setLayer(logo2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        escritorio.setLayer(logo3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
@@ -80,10 +80,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, escritorioLayout.createSequentialGroup()
                 .addContainerGap(525, Short.MAX_VALUE)
                 .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(logo2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(logo3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
+                .addComponent(logo1)
                 .addContainerGap())
         );
         escritorioLayout.setVerticalGroup(
@@ -92,11 +92,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addContainerGap(432, Short.MAX_VALUE)
                 .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(escritorioLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(logo2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(logo3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10))
-                    .addComponent(jLabel1))
+                    .addComponent(logo1))
                 .addContainerGap())
         );
 
@@ -284,9 +284,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem ItemAboutUs;
     private javax.swing.JDesktopPane escritorio;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -306,12 +303,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jmiInscripciones;
+    private javax.swing.JLabel logo1;
+    private javax.swing.JLabel logo2;
+    private javax.swing.JLabel logo3;
     // End of variables declaration//GEN-END:variables
-   private void generarVentana(JInternalFrame panel) {
+   
+    private void generarVentana(JInternalFrame panel) {
         escritorio.removeAll();
         escritorio.repaint();
         panel.setVisible(true);
         escritorio.add(panel);
         escritorio.moveToFront(panel);
-    }
-}
+        escritorio.add(logo1);
+        escritorio.add(logo2);
+        escritorio.add(logo3);
+}}
